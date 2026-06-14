@@ -2,62 +2,105 @@
 
 > Accessibility-focused desktop assistant enabling hands-free computer interaction through voice commands, Morse code input, and intelligent accessibility tools.
 
+## 🏆 Hackathon Submission
+
+**Agents League Hackathon 2026**
+
+### Submission Information
+
+* **Project Name:** AccessBridge
+* **Category:** Accessibility / Creative Apps
+* **Team:** Solo
+* **Status:** MVP / Prototype
+
+### Key Innovation
+
+AccessBridge combines voice control, Morse code interaction, and accessibility-focused assistance into a single desktop application, enabling users with limited mobility or accessibility needs to interact with computers more effectively.
+
+---
+
 ## 🚀 Overview
 
-AccessBridge is a desktop accessibility application designed to help users interact with computers using alternative input methods.
+AccessBridge is an accessibility-first desktop assistant designed to provide alternative computer interaction methods beyond traditional keyboard and mouse input.
 
-The project focuses on improving accessibility for users who may have difficulty using traditional keyboard and mouse controls by providing:
+The application offers:
 
-- 🎤 Voice-based commands
-- 📡 Morse code input system
-- ♿ Accessibility-focused controls
-- 💡 Smart suggestions and assistance
-- 🖥️ Hands-free interaction
+* 🎤 Voice Command Control
+* 📡 Morse Code Input System
+* ♿ Accessibility-Focused Interaction
+* 💡 Intelligent Suggestions
+* 🖥️ Hands-Free Operation
 
 ---
 
 ## ✨ Features
 
 ### 🎤 Voice Commands
-Control the system using spoken commands.
+
+Control applications and system functions using natural speech.
 
 ### 📡 Morse Code Input
-Interact with the computer using Morse code through one or two input buttons.
+
+Allows users to interact with the system using one or two buttons through Morse code.
 
 ### 💡 Smart Suggestions
-Provides context-aware recommendations and actions.
 
-### ♿ Accessibility First Design
-Built with accessibility and ease of use as primary goals.
+Provides helpful recommendations based on user interaction.
+
+### ♿ Accessibility First
+
+Designed with inclusivity and ease of use as core principles.
 
 ### ⚡ Lightweight Desktop Application
-Simple and efficient desktop experience.
+
+Simple architecture with minimal system requirements.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Usage |
-|------------|--------|
-| Python | Core Application |
-| Tkinter | GUI |
-| Speech Recognition | Voice Input |
+| Technology         | Purpose            |
+| ------------------ | ------------------ |
+| Python             | Core Application   |
+| Tkinter            | User Interface     |
+| Speech Recognition | Voice Input        |
 | Accessibility APIs | System Interaction |
-| GitHub | Version Control |
+| Git & GitHub       | Version Control    |
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-AccessBridge/
+accessbridge/
 │
+├── ai/
+│   ├── __init__.py
+│   ├── backend.py
+│   ├── foundry.py
+│   └── providers.py
+│
+├── core/
+│   ├── __init__.py
+│   ├── state.py
+│   └── utils.py
+│
+├── input/
+│   └── handler.py
+│
+├── morse/
+│   ├── __init__.py
+│   └── decoder.py
+│
+├── ui/
+│   ├── __init__.py
+│   └── dashboard.py
+│
+├── __init__.py
+├── config.json
 ├── main.py
 ├── requirements.txt
-├── assets/
-├── screenshots/
-├── README.md
-└── LICENSE
+└── README.md
 ```
 
 ---
@@ -87,41 +130,39 @@ python main.py
 
 ## 🎥 Demo Video
 
-Watch the project demo here:
+Watch the project demonstration here:
 
-[Demo Video Link](PASTE_VIDEO_LINK_HERE)
+[Demo Video](PASTE_YOUR_VIDEO_LINK_HERE)
 
-
+---
 
 ## 🎯 Problem Statement
 
-Many users face challenges using traditional computer input methods due to physical limitations or accessibility requirements.
+Many individuals face challenges using traditional keyboard and mouse interfaces due to mobility limitations, accessibility requirements, or situational constraints.
 
-AccessBridge provides alternative interaction methods that make computer usage more inclusive and accessible.
+AccessBridge provides alternative interaction methods that help make computing more accessible and inclusive.
 
 ---
 
 ## 🔮 Future Improvements
 
-- AI-powered assistance
-- Better speech recognition accuracy
-- Multi-language support
-- Custom accessibility profiles
-- Cloud synchronization
-- Cross-platform compatibility
+* AI-powered assistance
+* Improved speech recognition
+* Multi-language support
+* Personalized accessibility profiles
+* Cloud synchronization
+* Cross-platform support
 
 ---
-## 🏆 Hackathon Submission
 
-This project was developed as part of the Agents League Hackathon 2026.
+## 👨‍💻 Developer
 
-### Submission Information
+**Gokulnath**
 
-- Project Name: AccessBridge
-- Category: Accessibility / Creative Apps
-- Team: Solo
-- Status: Prototype / MVP
+Built for accessibility, inclusion, and innovative human-computer interaction.
 
-### Key Innovation
+---
 
-AccessBridge combines voice control, Morse code interaction, and accessibility-focused assistance into a single lightweight desktop application, enabling alternative ways for users to interact with computers.
+## ⭐ Support
+
+If you find this project useful, please consider starring the repository.
