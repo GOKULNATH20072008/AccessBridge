@@ -132,7 +132,7 @@ python main.py
 
 Watch the project demonstration here:
 
-[Demo Video](PASTE_YOUR_VIDEO_LINK_HERE)
+[Demo Video](https://youtu.be/LMUee8vj2Ew)
 
 ---
 
