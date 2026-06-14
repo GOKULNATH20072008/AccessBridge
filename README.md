@@ -111,3 +111,17 @@ AccessBridge provides alternative interaction methods that make computer usage m
 - Cross-platform compatibility
 
 ---
+## 🏆 Hackathon Submission
+
+This project was developed as part of the Agents League Hackathon 2026.
+
+### Submission Information
+
+- Project Name: AccessBridge
+- Category: Accessibility / Creative Apps
+- Team: Solo
+- Status: Prototype / MVP
+
+### Key Innovation
+
+AccessBridge combines voice control, Morse code interaction, and accessibility-focused assistance into a single lightweight desktop application, enabling alternative ways for users to interact with computers.
