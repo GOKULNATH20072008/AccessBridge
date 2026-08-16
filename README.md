@@ -31,6 +31,16 @@ The application offers:
 * 💡 Intelligent Suggestions
 * 🖥️ Hands-Free Operation
 
+### 🌐 Web Widget (v2)
+
+Alongside the desktop app, AccessBridge now ships a self-contained **web widget**
+that brings the same switch-access philosophy to any web page. A single switch
+key (or two switches) can drive every interactive element on a page, with
+auto-scan and step-scan modes, one-press select handling, screen-reader
+announcements, and a high-contrast highlight.
+
+See [`accessbridge/web_widget/`](accessbridge/web_widget/) for details and a runnable demo.
+
 ---
 
 ## ✨ Features

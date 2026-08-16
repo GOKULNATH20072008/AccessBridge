@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AccessBridge Demo — One-Switch Scanning</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --paper: #ffffff;
+      --accent: #0f766e;
+      --soft: #f3f4f6;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    header .brand { font-weight: 800; font-size: 18px; }
+    header nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    header nav a { color: #fde047; font-weight: 600; }
+    main { max-width: 760px; margin: 0 auto; padding: 24px; }
+    h1 { margin-top: 8px; }
+    h2 { margin-top: 40px; }
+    section {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      background: var(--soft);
+    }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    button.demo, .btn-demo {
+      font: inherit;
+      font-weight: 600;
+      padding: 10px 16px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    button.demo:hover, .btn-demo:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .counter { font-size: 18px; font-weight: 700; margin-top: 12px; }
+    form { display: grid; gap: 14px; margin-top: 12px; max-width: 460px; }
+    label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+    input[type="text"], input[type="email"], select, textarea {
+      font: inherit;
+      padding: 9px 10px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+    .row { display: flex; align-items: center; gap: 10px; }
+    .row label { flex-direction: row; align-items: center; font-weight: 500; }
+    [contenteditable] {
+      background: #fff;
+      border: 2px dashed var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 60px;
+      margin-top: 10px;
+    }
+    .status { margin-top: 14px; font-weight: 600; min-height: 22px; }
+    .status.ok { color: var(--accent); }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+    .note { color: #4b5563; font-size: 14px; }
+    .spin { font-size: 22px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">AccessBridge</div>
+    <nav>
+      <a href="#controls">Controls</a>
+      <a href="#form">Form</a>
+      <a href="#checklist">Self-test</a>
+      <a href="#editable">Editable</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>One-Switch Scanning Demo</h1>
+    <p>
+      Use the widget in the top-right corner. Turn on scanning, pick a speed, then drive the page with a single
+      switch key (Space by default). The highlight advances automatically; press the switch to activate.
+    </p>
+    <p>
+      Two modes, in the settings panel: <strong>Auto</strong> (highlight moves by itself, one switch activates) and
+      <strong>Step</strong> (two switches: <kbd>Space</kbd> moves to the next item, <kbd>Enter</kbd> activates it).
+      Press <kbd>Esc</kbd> anytime to stop scanning. A status pill next to the controls shows the current mode and
+      position; screen readers are told what happened on start, stop, edit, and activation.
+    </p>
+
+    <section id="controls">
+      <h2>Controls</h2>
+      <div class="actions">
+        <button class="demo" id="counter-btn" type="button">Press me</button>
+        <a class="btn-demo" href="#checklist">Jump to checklist</a>
+        <button class="demo" id="spin-btn" type="button"><span class="spin">&#8635;</span> Spin counter</button>
+      </div>
+      <p class="counter" id="counter">Pressed 0 times</p>
+      <p class="note">The counter button is the smoke-test target: activating it with the switch key must increment the count.</p>
+    </section>
+
+    <section id="form">
+      <h2>Form</h2>
+      <form id="demo-form">
+        <label>
+          Name
+          <input type="text" id="name" placeholder="Type your name">
+        </label>
+        <label>
+          Email
+          <input type="email" id="email" placeholder="you@example.com">
+        </label>
+        <label>
+          Plan
+          <select id="plan">
+            <option value="free">Free</option>
+            <option value="pro">Pro</option>
+            <option value="team">Team</option>
+          </select>
+        </label>
+        <label>
+          Notes
+          <textarea id="notes" rows="2" placeholder="Anything else?"></textarea>
+        </label>
+        <div class="row">
+          <input type="checkbox" id="agree">
+          <label for="agree">I agree to the terms</label>
+        </div>
+        <button class="demo" type="submit">Submit</button>
+      </form>
+      <p class="status" id="form-status" role="status"></p>
+    </section>
+
+    <section id="editable">
+      <h2>Editable region</h2>
+      <div contenteditable="true" id="editable">This paragraph is contenteditable. Activate it with the switch key, type normally, then press Esc to resume scanning.</div>
+    </section>
+
+    <section id="checklist">
+      <h2>Self-test checklist</h2>
+      <p class="note">Tick each box with the switch alone. If you can check them all, v1's definition of done is met.</p>
+      <ul class="checklist">
+        <li><input type="checkbox" id="t-toggle"><label for="t-toggle">Started scanning with only the switch (via the top-right control)</label></li>
+        <li><input type="checkbox" id="t-highlight"><label for="t-highlight">Highlight advanced automatically at a steady speed</label></li>
+        <li><input type="checkbox" id="t-activate"><label for="t-activate">Activated every link and button with one switch press</label></li>
+        <li><input type="checkbox" id="t-type"><label for="t-type">Typed in a text field and returned with Esc</label></li>
+        <li><input type="checkbox" id="t-select"><label for="t-select">Activated the Plan select and picked an option with one switch press</label></li>
+        <li><input type="checkbox" id="t-step"><label for="t-step">Switched to Step mode: Space moved the highlight, Enter activated</label></li>
+        <li><input type="checkbox" id="t-speed"><label for="t-speed">Changed scan speed while running</label></li>
+        <li><input type="checkbox" id="t-status"><label for="t-status">Saw the status pill update (mode and item position)</label></li>
+        <li><input type="checkbox" id="t-idle"><label for="t-idle">Survived 30+ seconds of no input and key-mashing</label></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="../widget/access-widget.js" async></script>
+  <script>
+    var count = 0;
+    var spins = 0;
+    var counterBtn = document.getElementById('counter-btn');
+    var counterEl = document.getElementById('counter');
+    counterBtn.addEventListener('click', function () {
+      count += 1;
+      counterEl.textContent = 'Pressed ' + count + (count === 1 ? ' time' : ' times');
+    });
+
+    var spinBtn = document.getElementById('spin-btn');
+    spinBtn.addEventListener('click', function () {
+      spins += 1;
+      counterEl.textContent = 'Spins ' + spins;
+    });
+
+    document.getElementById('demo-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('form-status');
+      status.textContent = 'Form submitted: ' + document.getElementById('name').value || '(no name)';
+      status.className = 'status ok';
+    });
+  </script>
+</body>
+</html>
