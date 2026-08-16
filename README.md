@@ -1,6 +1,6 @@
 # AccessBridge
 
-> Accessibility-focused desktop assistant enabling hands-free computer interaction through voice commands, Morse code input, and intelligent accessibility tools.
+> Accessibility-first, hands-free computer interaction — voice commands, Morse code input, and a switch-driven web widget for any page.
 
 ## 🏆 Hackathon Submission
 
@@ -21,25 +21,39 @@ AccessBridge combines voice control, Morse code interaction, and accessibility-f
 
 ## 🚀 Overview
 
-AccessBridge is an accessibility-first desktop assistant designed to provide alternative computer interaction methods beyond traditional keyboard and mouse input.
-
-The application offers:
+AccessBridge is an accessibility-first assistant that provides alternative computer interaction methods beyond traditional keyboard and mouse input — on the desktop and on the web.
 
 * 🎤 Voice Command Control
 * 📡 Morse Code Input System
+* 🌐 Switch-Access Web Widget (v2)
 * ♿ Accessibility-Focused Interaction
 * 💡 Intelligent Suggestions
 * 🖥️ Hands-Free Operation
 
-### 🌐 Web Widget (v2)
+---
 
-Alongside the desktop app, AccessBridge now ships a self-contained **web widget**
-that brings the same switch-access philosophy to any web page. A single switch
-key (or two switches) can drive every interactive element on a page, with
-auto-scan and step-scan modes, one-press select handling, screen-reader
-announcements, and a high-contrast highlight.
+## 🌐 Web Widget (v2)
 
-See [`accessbridge/web_widget/`](accessbridge/web_widget/) for details and a runnable demo.
+The **AccessBridge Web Widget** brings switch-access to any web page. A person using a single switch key (Space by default) — or two switches — can navigate and activate every interactive element, with an adjustable scan speed and a high-contrast highlight.
+
+One self-contained file, vanilla JS, no dependencies, no build step:
+
+```html
+<script src="accessbridge/web_widget/access-widget.js" async></script>
+```
+
+**What it does**
+
+* **Auto mode** — the highlight auto-advances at Slow / Medium / Fast; the switch key activates the highlighted item.
+* **Step mode** (two switches) — `Space` moves the highlight, `Enter` activates it; no timer runs.
+* **One-press selects** — a `<select>` opens its native dropdown on activation; scanning pauses until you pick an option.
+* **Text fields** — enter a paused editing state on activation (the switch key is released to the field); `Esc` returns to scanning.
+* **Screen-reader support** — `aria-live` announcements for start/stop, editing, and activations; the target receives real focus with the native ring suppressed.
+* **Status pill** — live mode, speed, and position (e.g. `Scanning · medium · 5/24`).
+* **Key-mash proof** — presses within 250 ms and OS repeat keys are ignored; a debounced `MutationObserver` tracks page changes.
+* Settings persist in a cookie (`accessbridge_settings`).
+
+Try the runnable demo: [`accessbridge/web_widget/`](accessbridge/web_widget/)
 
 ---
 
@@ -75,6 +89,8 @@ Simple architecture with minimal system requirements.
 | Tkinter            | User Interface     |
 | Speech Recognition | Voice Input        |
 | Accessibility APIs | System Interaction |
+| Vanilla JS         | Web Widget (v2)    |
+| Shadow DOM         | Widget Isolation   |
 | Git & GitHub       | Version Control    |
 
 ---
@@ -83,6 +99,11 @@ Simple architecture with minimal system requirements.
 
 ```text
 accessbridge/
+│
+├── web_widget/              # Web Widget (v2)
+│   ├── access-widget.js     #   entire widget, single file
+│   ├── demo/index.html      #   runnable demo + self-test checklist
+│   └── README.md
 │
 ├── ai/
 │   ├── __init__.py
